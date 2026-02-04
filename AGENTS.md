@@ -11,6 +11,12 @@
 
 mittelpunkt provides a comprehensive set of features for building custom data platforms:
 
+## Scope & Status
+
+- This document mixes current implementation rules and future product vision.
+- Treat the Features section as product direction, not as “everything already exists”.
+- If unsure whether a feature already exists → ask before implementing.
+
 ### Core Philosophy
 
 **✅ Open Source**
@@ -331,6 +337,8 @@ mittelpunkt/
 - Error handling: Use Result<T, E> pattern or typed errors (no throwing strings)
 - Default to small components. Prefer focused modules over god components
 - Default to small files and diffs. Avoid repo wide rewrites unless asked
+- Explicit return types for public functions
+- Keep files small and focused
 
 ## Tech Stack
 
@@ -376,14 +384,14 @@ mittelpunkt/
 - Never remove failing tests
 - Domain tests validate behavior, not implementation details.
 - Tests should be deterministic and side-effect free.
-- Infrastructure tests may use in-memory implementations only.
+- Infrastructure tests may use in-memory or test DB, never production DB
 
 ## Rules
 
 - Ask before generating new files
 - No magic: Prefer explicit code over reflection or meta-programming
 - Data validation happens at domain boundaries (API input, DB output)
-- Database is an implementation detail - domain doesn't import ORM types
+- Domain must not depend on ORM or framework types - domain doesn't import ORM types
 - UI components receive validated domain types, not raw API responses
 - Never bypass type safety with `as any` or `@ts-ignore`
 - Document "why" in comments, not "what" (code should be self-documenting)
@@ -400,6 +408,16 @@ mittelpunkt/
 - ❌ Don't write tests that need real database (use in-memory or test DB)
 - ❌ Don't bypass Zod validation
 - ❌ Don't store sensitive data in JSONB without encryption
+
+## Workflow for Agents
+
+1. Understand domain impact
+2. Update domain
+3. Add/adjust use-cases
+4. Wire infrastructure
+5. Expose via API or UI
+6. Write tests
+7. Run checks
 
 ## Questions & Updates
 
