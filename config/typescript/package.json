@@ -1,0 +1,19 @@
+{
+  "name": "@mittelpunkt/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "*.json"
+  ],
+  "exports": {
+    ".": "./base.json",
+    "./base": "./base.json",
+    "./base.json": "./base.json",
+    "./next-app": "./next-app.json",
+    "./next-app.json": "./next-app.json",
+    "./node-app": "./node-app.json",
+    "./node-app.json": "./node-app.json",
+    "./node-library": "./node-library.json",
+    "./node-library.json": "./node-library.json"
+  }
+}

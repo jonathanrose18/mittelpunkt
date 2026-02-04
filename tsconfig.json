@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@mittelpunkt/tsconfig/base",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "exclude": [
+    ".turbo",
+    "build",
+    "dist",
+    "node_modules"
+  ]
+}
